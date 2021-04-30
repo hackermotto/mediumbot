@@ -24,7 +24,7 @@ setup(
         ("mediumbot", ["config/logging.yaml"]),
         ("mediumbot", ["config/default.yaml"]),
     ],
-    entry_points={'console_scripts': ['mediumbot=mediumbot.__main___:main']},
+    entry_points={'console_scripts': ['mediumbot=mediumbot.__main__:main']},
     packages=find_packages(
         where="src",
         # exclude = ['additional',]
