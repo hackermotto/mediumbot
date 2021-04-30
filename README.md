@@ -9,48 +9,55 @@ $ pip3 install mediumbot/
 # Configuration File
 > mediumbot.yaml
 ```yaml
-USERNAME: 'hackermotto'
-EMAIL: 'mediumbot@hackermotto.com'
-PASSWORD: 'p@ssw0rd'
-PHONE: '+201122333444'
-LOGIN_SERVICE: 'Twitter'
-COOKIES: ''
-DRIVER: 'Firefox'
-HEADLESS: True
 
-POST_BLACK_LIST:
+username: 'hackermotto'
+email: 'root@hackermotto.com'
+password: 'p@ssw0rd'
+phone: '+20112233444'
+login_service: 'Twitter'
+cookies: ''
+driver: 'Firefox'
+headless: true
+
+post_black_list:
   - 'Sex'
   - 'Drugs'
   - 'Child Labor'
 
-CLAP_FOR_POSTS: True
-RANDOMIZE_CLAPPING_FOR_POSTS: False
-MAX_CLAPS_FOR_POST: 50
-MIN_CLAPS_FOR_POST: 50
+clap_for_posts: true
+randomize_clapping_for_posts: false
+max_claps_for_post: 45
+min_claps_for_post: 20
 
-COMMENT_ON_POSTS: True
-RANDOMIZE_COMMENTING_ON_POSTS: False
-COMMENTS: 
-  - 'Great post.'
-  - 'Great read!'
+comment_on_posts: true
+randomize_commenting_on_posts: false
+comments: 
+  - 'Great Post.'
+  - 'Great Read!'
   - 'Good work keep it up!'
   - 'Really enjoyed the content!'
   - 'Very interesting!'
 
-FOLLOW_USERS: True
-RANDOMIZE_FOLLOWING_USERS: False
+follow_users: true
+randomize_following_users: false
 
-UNFOLLOW_USERS: False
-RANDOMIZE_UNFOLLOWING_USERS: False
-UNFOLLOW_USERS_BLACK_LIST: 
-  - 'DontUnFollowMe'
+unfollow_users: false
+randomize_unfollowing_users: false
+unfollow_users_black_list: 
+  - 'DontUnfollowMe'
 
-USE_RELATED_TOPICS: True
-POSTS_PER_TOPIC: 50
-VERBOSE: True
+use_related_topics: true
+posts_per_topic: 50
+verbose: true
 
-MAX_SLEEP: 15
-MIN_SLEEP: 10
+max_sleep: 50
+min_sleep: 30
+
+logging_level: "INFO"
+logging_datefmt: "%m/%d/%Y %H:%M:%S"
+logging_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+logging_file: "mediumbot.log"
+
 ```
 
 # Running

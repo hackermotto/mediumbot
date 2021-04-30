@@ -1,16 +1,14 @@
 #!/usr/bin/python3
 
 import os 
-import sys 
-sys.path.append('../src/')
-
 import optparse
+
 from mediumbot.bot import Bot
 
 def GetDefaultConfig():
 	return os.path.join(os.path.expanduser("~"), ".local", "mediumbot", "default.yaml")
 
-if __name__ == "__main__":
+def main():
 
 	parser = optparse.OptionParser()
 
@@ -58,3 +56,6 @@ if __name__ == "__main__":
 	if options.config:
 		bot.fileConfig(options.config)
 	bot.Lunch()
+
+if __name__ == "__main__":
+	main()

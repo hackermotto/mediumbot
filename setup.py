@@ -17,18 +17,20 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/hackermotto/mediumbot",
     scripts=[
-        "scripts/mediumbot",
+        # "scripts/mediumbot",
+        # "scripts/mediumbot.service",
         ],
     data_files=[
         ("mediumbot", ["config/logging.yaml"]),
         ("mediumbot", ["config/default.yaml"]),
     ],
+    entry_points={'console_scripts': ['mediumbot=mediumbot.__main___:main']},
     packages=find_packages(
         where="src",
         # exclude = ['additional',]
     ),
     package_dir={"":"src"},
-    python_requires=">=3.7",
+    python_requires=">=3",
     platforms=["win32", "linux", "linux2", "darwin"],
     install_requires=[
         "beautifulsoup4==4.9.3",
