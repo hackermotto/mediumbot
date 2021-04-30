@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+import optparse
+from mediumbot.bot import Bot
+
+if __name__ == "__main__":
+
+	parser = optparse.OptionParser()
+	parser.add_option("-c", "--config", dest="config", default="", help="Pass the configuration file path.")
+	(options, args) = parser.parse_args()
+
+	bot = Bot()
+	if options.config:
+		bot.fileConfig(options.config)
+	bot.Lunch()
