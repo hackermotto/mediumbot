@@ -1,0 +1,25 @@
+1619833872592	geckodriver	INFO	Listening on 127.0.0.1:50999
+1619833873591	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--no-sandbox" "--disable-gpu" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileSs98pW"
+*** You are running in headless mode.
+1619833885031	Marionette	INFO	Listening on port 46009
+1619833885091	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619833947072	geckodriver	INFO	Listening on 127.0.0.1:57893
+1619833947091	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilejpzZOH"
+1619833959316	Marionette	INFO	Listening on port 45203
+1619833959353	Marionette	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1619834025443	geckodriver	INFO	Listening on 127.0.0.1:47237
+1619834025461	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileEoIeD2"
+1619834037082	Marionette	INFO	Listening on port 45911
+1619834037117	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.

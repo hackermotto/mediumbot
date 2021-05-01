@@ -22,7 +22,7 @@ setup(
         ],
     data_files=[
         ("mediumbot", ["config/logging.yaml"]),
-        ("mediumbot", ["config/default.yaml"]),
+        ("mediumbot", ["config/mediumbotd.yaml"]),
     ],
     entry_points={'console_scripts': ['mediumbot=mediumbot.__main__:main']},
     packages=find_packages(

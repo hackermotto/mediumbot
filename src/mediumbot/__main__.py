@@ -6,7 +6,7 @@ import optparse
 from mediumbot.bot import Bot
 
 def GetDefaultConfig():
-	return os.path.join(os.path.expanduser("~"), ".local", "mediumbot", "default.yaml")
+	return os.path.join(os.path.expanduser("~"), ".local", "mediumbot", "mediumbotd.yaml")
 
 def main():
 

@@ -12,7 +12,7 @@ Description=MediumBot Service
 Type=simple
 
 # Command to execute when the service is started
-ExecStart=/usr/bin/python3 mediumbot
+ExecStart=mediumbot -c /etc/mediumbot/mediumbotd.yaml
 
 # Disable Python's buffering of STDOUT and STDERR, so that output from the
 # service shows up immediately in systemd's logs
