@@ -65,6 +65,20 @@ logging_file: "mediumbot.log"
 mediumbot -c mediumbot.yaml
 ```
 
+# Running On the Background
+```sh
+tmux
+mediumbot -c mediumbot.yaml
+```
+
+Press `CTRL+b` then `d`
+
+```sh
+tmux list-sessions
+tmux attach-sessions -t 0
+
+```
+
 # Information
 
 says the daily follow limit for Medium is 125.

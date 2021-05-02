@@ -6,7 +6,7 @@ phone: ''
 login_service: 'Twitter'
 cookies: ''
 driver: 'Firefox'
-headless: false
+headless: true
 
 post_black_list:
   - 'Sex'

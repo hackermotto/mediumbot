@@ -7,6 +7,9 @@ except:
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("requirements.txt", "r", encoding="utf-8") as fr:
+    requirements= fr.read()
+
 setup(
     name="MediumBot",
     version="0.0.1",
@@ -19,10 +22,11 @@ setup(
     scripts=[
         # "scripts/mediumbot",
         # "scripts/mediumbot.service",
+        "scripts/mediumbot-installer.sh",
         ],
     data_files=[
         ("mediumbot", ["config/logging.yaml"]),
-        ("mediumbot", ["config/mediumbotd.yaml"]),
+        ("mediumbot", ["config/mediumbot.yaml"]),
     ],
     entry_points={'console_scripts': ['mediumbot=mediumbot.__main__:main']},
     packages=find_packages(
@@ -32,20 +36,11 @@ setup(
     package_dir={"":"src"},
     python_requires=">=3",
     platforms=["win32", "linux", "linux2", "darwin"],
-    install_requires=[
-        "beautifulsoup4==4.9.3",
-        "bs4==0.0.1",
-        "PyYAML==5.4.1",
-        "schedule==1.1.0",
-        "selenium==3.141.0",
-        "soupsieve==2.2.1",
-        "urllib3==1.26.4"
-    ],
+    install_requires=requirements,
     include_package_data=True,
     zip_safe=False,
-    license=[
-        "Apache 2",
-    ],
+    keywords=['bot', 'selenium', 'automation'],
+    license=["Apache 2",],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
@@ -54,11 +49,11 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: Implementation :: CPython",
-        "Programming Language :: Python :: Implementation :: PyPy",
-        "Topic :: Software Development :: Libraries :: Python Modules"
-        "License :: OSI Approved :: Apache Software License",
         "Development Status :: 5 - Production/Stable",
+        "License :: OSI Approved :: Apache Software License",
+        "Topic :: Software Development :: Libraries :: Python Modules"
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Programming Language :: Python :: Implementation :: CPython",
     ],
     project_urls={
         "Funding": "https://www.paypal.me/DeyaaMuhammad",

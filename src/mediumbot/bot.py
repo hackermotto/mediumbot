@@ -7,6 +7,7 @@ import pprint
 import atexit
 
 from selenium import webdriver
+from pyvirtualdisplay import Display
 
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -74,6 +75,11 @@ class Bot(basicConfig, loggerConfig):
         logger = self.startLogger()
         logger.info("Lunching ...")
         self.StartBrowser(logger)
+        self.startVirtualDisplay(logger)
+
+    def startVirtualDisplay(self, logger):
+        display = Display(visible=0, size=(800,600))
+        display.start()
 
     def StartBrowser(self, logger):
         logger.info("Starting Browser ...")

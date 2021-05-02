@@ -1,18 +1,16 @@
 # systemd unit file for the MediumBot Service
 
-
 [Unit]
 
 # Human readable name of the unit
 Description=MediumBot Service
-
 
 [Service]
 
 Type=simple
 
 # Command to execute when the service is started
-ExecStart=mediumbot -c /etc/mediumbot/mediumbotd.yaml
+ExecStart="/home/deyaa/.local/bin/mediumbot -c /home/tyler/Desktop/mediumbot/config/.hackermotto.yaml"
 
 # Disable Python's buffering of STDOUT and STDERR, so that output from the
 # service shows up immediately in systemd's logs
