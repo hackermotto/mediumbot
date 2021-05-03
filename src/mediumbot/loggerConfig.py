@@ -35,9 +35,9 @@ class loggerConfig:
         # add ch to logger
         logging.getLogger().addHandler(ch)
 
-        return logging.getLogger()
+        self.logger = logging.getLogger()
 
 
     def loggerConfig(self, file):
         loggin.fileConfig(file)
-        return logging.getLogger()
+        self.logger = logging.getLogger()

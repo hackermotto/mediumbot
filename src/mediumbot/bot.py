@@ -68,18 +68,21 @@ class Bot(basicConfig, loggerConfig):
     logging_file = "mediumbot.log"
 
     def __init__(self, *args, **kwargs):
-        # atexit.register(self.TearDown)
-        pass
+        self.browser = None
+        self.logger = None
+        self.display = None
+        
+        atexit.register(self.stop)
 
-    def Lunch(self):
-        logger = self.startLogger()
-        logger.info("Lunching ...")
-        self.StartBrowser(logger)
-        self.startVirtualDisplay(logger)
+    def start(self):
+        self.startLogger()
+        self.logger.info("Lunching ...")
+        self.startVirtualDisplay(self.logger)
+        self.StartBrowser(self.logger)
 
     def startVirtualDisplay(self, logger):
-        display = Display(visible=0, size=(800,600))
-        display.start()
+        self.display = Display(visible=0, size=(800,600))
+        self.display.start()
 
     def StartBrowser(self, logger):
         logger.info("Starting Browser ...")
@@ -92,7 +95,7 @@ class Bot(basicConfig, loggerConfig):
                 options.add_argument("--headless")
                 options.add_argument("--no-sandbox")
                 options.add_argument("--disable-gpu")
-            browser = webdriver.Chrome(options=options)
+            self.browser = webdriver.Chrome(options=options)
 
         elif DriverType == "firefox":
             options = FirefoxOptions()
@@ -100,15 +103,17 @@ class Bot(basicConfig, loggerConfig):
                 options.add_argument("--headless")
                 options.add_argument("--no-sandbox")
                 options.add_argument("--disable-gpu")
-            browser = webdriver.Firefox(options=options)
+            self.browser = webdriver.Firefox(options=options)
 
-        if self.SignInToService(browser, logger):
-            self.MediumBot(browser, logger)
+        if self.SignInToService(self.browser, self.logger):
+            self.MediumBot(self.browser, self.logger)
 
-        self.TearDown(browser, logger)
+        self.stop(self.browser, logger)
 
-    def TearDown(self, browser, logger):
-        browser.quit()
+    # @atexit.register
+    def stop(self):
+        self.browser.quit()
+        self.display.stop()
 
     def MediumBot(self, browser, logger):
         logger.info("Starting MediumBot ...")

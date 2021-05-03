@@ -55,7 +55,7 @@ def main():
 	bot = Bot()
 	if options.config:
 		bot.fileConfig(options.config)
-	bot.Lunch()
+	bot.start()
 
 if __name__ == "__main__":
 	main()
