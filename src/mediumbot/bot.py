@@ -1,4 +1,5 @@
 
+import sys
 import bs4
 import time
 import random
@@ -71,7 +72,7 @@ class Bot(basicConfig, loggerConfig):
         self.browser = None
         self.logger = None
         self.display = None
-        
+
         atexit.register(self.stop)
 
     def start(self):
@@ -81,8 +82,13 @@ class Bot(basicConfig, loggerConfig):
         self.StartBrowser(self.logger)
 
     def startVirtualDisplay(self, logger):
-        self.display = Display(visible=0, size=(800,600))
-        self.display.start()
+        
+        if self.headless:
+            if not sys.platform.startswith("win"):
+                self.display = Display(visible=0, size=(800,600))
+                self.display.start()
+            else:
+                pass
 
     def StartBrowser(self, logger):
         logger.info("Starting Browser ...")
@@ -108,12 +114,15 @@ class Bot(basicConfig, loggerConfig):
         if self.SignInToService(self.browser, self.logger):
             self.MediumBot(self.browser, self.logger)
 
-        self.stop(self.browser, logger)
+        self.stop()
 
     # @atexit.register
     def stop(self):
-        self.browser.quit()
-        self.display.stop()
+        try:
+            self.display.stop()
+            self.browser.quit()
+        except:
+            pass
 
     def MediumBot(self, browser, logger):
         logger.info("Starting MediumBot ...")
