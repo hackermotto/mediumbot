@@ -287,7 +287,8 @@ class Bot(basicConfig, loggerConfig):
                 )
 
             for link in browser.find_elements_by_xpath(TopicsElementsXpath):
-                topicsUrls.append(link.get_attribute("href"))
+                if "/topic/" in link.get_attribute("href"):
+                    topicsUrls.append(link.get_attribute("href"))
 
             # soup = bs4.BeautifulSoup(browser.page_source, "html.parser")
 

@@ -5,7 +5,7 @@ sudo apt upgrade
 sudo apt install git -y
 sudo apt install jq -y
 sudo apt install firefox -y
-sudo apt install chromium -y
+sudo apt install chrome-browser -y
 sudo apt-get install xvfb -y
 
 git clone https://github.com/hackermotto/WebDriversManager
