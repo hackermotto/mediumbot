@@ -42,6 +42,8 @@ verbose: true
 max_sleep: 15
 min_sleep: 10
 
+timeout: 60
+
 logging_level: "INFO"
 logging_datefmt: "%m/%d/%Y %H:%M:%S"
 logging_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

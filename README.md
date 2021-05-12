@@ -106,3 +106,6 @@ says the daily follow limit for Medium is 125.
 # References
 1. https://selenium-python.readthedocs.io/installation.html
 2. https://www.section.io/engineering-education/install-a-gui-on-an-ubuntu-server-1804/
+3. https://stackoverflow.com/questions/44515896/restart-script-instead-of-turning-it-off-when-error-happens-in-python-selenium
+4. https://stackoverflow.com/questions/122327/how-do-i-find-the-location-of-my-python-site-packages-directory
+5. https://packaging.python.org

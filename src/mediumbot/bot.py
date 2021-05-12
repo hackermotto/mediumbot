@@ -67,6 +67,8 @@ class Bot(basicConfig, loggerConfig):
     max_sleep = 15
     min_sleep = 10
 
+    timeout = 60
+
     logging_level = "INFO"
     logging_datefmt = "%m/%d/%Y %H:%M:%S"
     logging_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -81,7 +83,7 @@ class Bot(basicConfig, loggerConfig):
 
     def start(self):
         self.startLogger()
-        self.logger.info("Lunching ...")
+        self.logger.info("Lunching ..")
         self.startVirtualDisplay(self.logger)
         self.StartBrowser(self.logger)
 
@@ -95,7 +97,7 @@ class Bot(basicConfig, loggerConfig):
                 pass
 
     def StartBrowser(self, logger):
-        logger.info("Starting Browser ...")
+        logger.info("Starting Browser ..")
 
         DriverType = self.driver.lower()
 
@@ -115,12 +117,14 @@ class Bot(basicConfig, loggerConfig):
                 options.add_argument("--disable-gpu")
             self.browser = webdriver.Firefox(options=options)
 
+        self.browser.implicitly_wait(self.timeout)
+        self.browser.set_page_load_timeout(self.timeout)
+
         if self.SignInToService(self.browser, self.logger):
             self.MediumBot(self.browser, self.logger)
 
         self.stop()
 
-    # @atexit.register
     def stop(self):
         try:
             self.display.stop()
@@ -129,7 +133,7 @@ class Bot(basicConfig, loggerConfig):
             pass
 
     def MediumBot(self, browser, logger):
-        logger.info("Starting MediumBot ...")
+        logger.info("Starting MediumBot ..")
 
         if self.comment_on_posts or self.clap_for_posts or self.follow_users:
 
@@ -153,7 +157,7 @@ class Bot(basicConfig, loggerConfig):
                 self.UnFollow(browser, logger)
 
     def SignInToService(self, browser, logger):
-        logger.info("Signing in to service ...")
+        logger.info("Signing in to service ..")
 
         SignInWith = self.login_service.lower()
         SignedIn = False
@@ -209,7 +213,7 @@ class Bot(basicConfig, loggerConfig):
         return SignedIn
 
     def SignInToTwitter(self, browser, logger):
-        logger.info("Signing in to Twitter ...")
+        logger.info("Signing in to Twitter ..")
 
         SignedIn = False
 
@@ -230,7 +234,7 @@ class Bot(basicConfig, loggerConfig):
         return SignedIn
 
     def SignInToGoogle(self, browser, logger):
-        logger.info("Signing in to Google ...")
+        logger.info("Signing in to Google ..")
 
         SignedIn = False
 
@@ -254,7 +258,7 @@ class Bot(basicConfig, loggerConfig):
         return SignedIn
 
     def SignInToFacebook(self, browser, logger):
-        logger.info("Signing in to Facebook ...")
+        logger.info("Signing in to Facebook ..")
 
         SignedIn = False
 
@@ -275,7 +279,7 @@ class Bot(basicConfig, loggerConfig):
         return SignedIn
 
     def SignOut(self, browser, logger):
-        logger.info("Signing Out ...")
+        logger.info("Signing Out ..")
         
         SignedOut = False
         
@@ -290,7 +294,7 @@ class Bot(basicConfig, loggerConfig):
         return SignedOut
 
     def ScrapeTopicsUrls(self, browser, logger):
-        logger.info("Scraping topics URLs ...")
+        logger.info("Scraping topics URLs ..")
         try:
 
             topicsUrls = []
@@ -308,22 +312,15 @@ class Bot(basicConfig, loggerConfig):
             for link in browser.find_elements_by_xpath(TopicsElementsXpath):
                 if "/topic/" in link.get_attribute("href"):
                     topicsUrls.append(link.get_attribute("href"))
+                    logger.info("Scraping - Adding: {}".format(link.get_attribute("href")))
 
-            # soup = bs4.BeautifulSoup(browser.page_source, "html.parser")
-
-            # for div in soup.find_all('div', class_="u-flexColumn u-flex0 u-borderBox u-width280 u-height280 u-borderBlackLightest u-marginHorizontal15 u-marginBottom30 js-sectionItem"):
-            # 	for a in div.find_all('a'):
-            # 		if a["href"] not in topicsUrls:
-            # 			topicsUrls.append(a["href"])
-
-            logger.info(topicsUrls)
             return topicsUrls
 
         except:
             logger.error("Scraping topics URLs Failed.")
 
     def ScrapePostsUrlsOffTopicsPage(self, browser, logger, topicUrl):
-        logger.info("Scraping posts URLs ...")
+        logger.info("Scraping posts URLs ..")
         try:
 
             postsUrls = []
@@ -343,15 +340,15 @@ class Bot(basicConfig, loggerConfig):
                 for a in soup.find_all("a"):
                     if a["href"] not in postsUrls:
                         postsUrls.append(a["href"])
+                        logger.info("Scraping - Adding: {}".format(a["href"]))
 
-            logger.info(postsUrls)
             return postsUrls
 
         except:
             logger.error("Scraping posts URLs Failed.")
 
     def ClapCommentAndFollowOnPost(self, browser, logger, postUrl):
-        logger.info("Clap Comment and Follow the post ...")
+        logger.info("Clap Comment and Follow the post ..")
         try:
             if postUrl.startswith("/"):
                 postUrl = "https://medium.com{}".format(postUrl)
@@ -385,7 +382,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("Clap Comment and Follow Failed.")
 
     def ClapForPost(self, browser, logger):
-        logger.info("Clapping ...")
+        logger.info("Clapping ..")
 
         try:
 
@@ -406,7 +403,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("Clapping Failed.")
 
     def CommentOnPost(self, browser, logger):
-        logger.info("Commenting ...")
+        logger.info("Commenting ..")
         try:
             alreadyCommented = False
 
@@ -454,7 +451,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("Commenting Failed.")
 
     def Follow(self, browser, logger):
-        logger.info("Following ...")
+        logger.info("Following ..")
         try:
             FollowButtonXpath = "(//*[text()='Follow'])[1]"
             browser.find_element_by_xpath(FollowButtonXpath).click()
@@ -465,7 +462,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("Following Failed.")
 
     def UnFollow(self, browser, logger):
-        logger.info("UnFollowing ...")
+        logger.info("UnFollowing ..")
         try:
 
             browser.get("https://medium.com/me")
@@ -542,7 +539,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("UnFollowing Failed.")
 
     def ScrollToBottomAndWaitForLoad(self, browser, logger):
-        logger.info("Scrolling ...")
+        logger.info("Scrolling ..")
         try:
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -550,7 +547,7 @@ class Bot(basicConfig, loggerConfig):
             logger.error("Scrolling Failed.")
 
     def sleep(self, logger):
-        logger.info("Sleeping ...")
+        logger.info("Sleeping ..")
         try:
             SleepingTime = random.randint(self.min_sleep, self.max_sleep)
             logger.info("Sleeping for {}".format(SleepingTime))
