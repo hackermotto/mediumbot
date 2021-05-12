@@ -22,6 +22,7 @@ def main():
 	parser.add_option("--headless", dest="headless", help="Set Headless")
 
 	parser.add_option("--post_black_list", dest="post_black_list", help="Post Black List")
+	
 	parser.add_option("--clap_for_posts", dest="clap_for_posts", help="Clap For Posts")
 	parser.add_option("--randomize_clapping_for_posts", dest="randomize_clapping_for_posts", help="Randomize Clapping For Posts")
 	parser.add_option("--max_claps_for_post", dest="max_claps_for_post", help="Set Maximum Claps For Post")
@@ -30,8 +31,10 @@ def main():
 	parser.add_option("--comment_on_posts", dest="comment_on_posts", help="Comment On Posts")
 	parser.add_option("--randomize_commenting_on_posts", dest="randomize_commenting_on_posts", help="Randomize Commenting On Posts")
 	parser.add_option("--comments", dest="comments", help="Set Comments")
+
 	parser.add_option("--follow_users", dest="follow_users", help="Follow Users")
 	parser.add_option("--randomize_following_users", dest="randomize_following_users", help="Randomize Following Users")
+	
 	parser.add_option("--unfollow_users", dest="unfollow_users", help="Unfollow Users")
 	parser.add_option("--randomize_unfollowing_users", dest="randomize_unfollowing_users", help="Randomize Unfollowing Users")
 	parser.add_option("--unfollow_users_black_list", dest="unfollow_users_black_list", help="Unfollow Users Black List")
@@ -52,10 +55,14 @@ def main():
 
 	(options, args) = parser.parse_args()
 
-	bot = Bot()
-	if options.config:
-		bot.fileConfig(options.config)
-	bot.start()
+	try:
+		bot = Bot()
+		if options.config:
+			bot.fileConfig(options.config)
+		bot.start()
+
+	except:
+		main()
 
 if __name__ == "__main__":
 	main()

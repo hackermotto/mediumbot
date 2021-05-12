@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install git -y
 sudo apt install jq -y
 sudo apt install firefox -y
@@ -15,6 +15,10 @@ chmod +x ./wdm.sh
 ./wdm.sh install gecko
 ./wdm.sh install chrome
 
+
+sudo apt-get install lubuntu-desktop -y
+sudo apt-get install tightvncserver -y
+vncserver
 
 # cp mediumbot.service /etc/systemctl/system/mediumbot.service
 

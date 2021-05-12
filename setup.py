@@ -19,6 +19,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hackermotto/mediumbot",
+    download_url="https://github.com/hackermotto/mediumbot/archive/main.zip",
     scripts=[
         # "scripts/mediumbot",
         # "scripts/mediumbot.service",
@@ -56,9 +57,9 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
     ],
     project_urls={
-        "Funding": "https://www.paypal.me/DeyaaMuhammad",
         "Documentation": "http://mediumbot.readthedocs.io/en/latest/",
         "Bug Tracker": "https://github.com/hackermotto/mediumbot/issues",
-        "Source": "https://github.com/hackermotto/mediumbot"
+        "Source": "https://github.com/hackermotto/mediumbot",
+        "Funding": "https://www.paypal.me/DeyaaMuhammad",
     },
 )

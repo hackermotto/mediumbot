@@ -7,7 +7,8 @@ $ pip3 install mediumbot/
 ```
 
 # Configuration File
-> mediumbot.yaml
+Configuration File Example mediumbot.yaml
+
 ```yaml
 
 username: 'hackermotto'
@@ -79,6 +80,18 @@ tmux attach-sessions -t 0
 
 ```
 
+# Running on Linux with Gui
+
+## Installing GUI on VPS
+
+```sh
+sudo apt-get install lubuntu-desktop
+sudo apt-get install tightvncserver
+vncserver
+```
+
+After installing you can connect to your server by pointing your VNC client to your external IP at port 5901 (Ex. 196.168.0.1:5901).
+
 # Information
 
 says the daily follow limit for Medium is 125.
@@ -92,3 +105,4 @@ says the daily follow limit for Medium is 125.
 
 # References
 1. https://selenium-python.readthedocs.io/installation.html
+2. https://www.section.io/engineering-education/install-a-gui-on-an-ubuntu-server-1804/

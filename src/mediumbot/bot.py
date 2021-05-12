@@ -36,11 +36,13 @@ class Bot(basicConfig, loggerConfig):
     post_black_list = ["Sex", "Drugs", "Child Labor"]
 
     clap_for_posts = True
+    max_claps_per_day = None
     randomize_clapping_for_posts = False
     max_claps_for_post = 50
     min_claps_for_post = 10
 
     comment_on_posts = True
+    max_comments_per_day = None
     randomize_commenting_on_posts = False
     comments = [
         "Great read!",
@@ -50,9 +52,11 @@ class Bot(basicConfig, loggerConfig):
     ]
 
     follow_users = True
+    max_follows_per_day = 125
     randomize_following_users = False
 
     unfollow_users = False
+    max_unfollows_per_day = None
     randomize_unfollowing_users = False
     unfollow_users_black_list = ["DontUnfollowMe"]
 
@@ -270,6 +274,21 @@ class Bot(basicConfig, loggerConfig):
 
         return SignedIn
 
+    def SignOut(self, browser, logger):
+        logger.info("Signing Out ...")
+        
+        SignedOut = False
+        
+        try:
+            browser.delete_all_cookies()
+
+            SignedOut = True
+    
+        except:
+            logger.error("Signing Out Failed.")
+
+        return SignedOut
+
     def ScrapeTopicsUrls(self, browser, logger):
         logger.info("Scraping topics URLs ...")
         try:
@@ -367,7 +386,9 @@ class Bot(basicConfig, loggerConfig):
 
     def ClapForPost(self, browser, logger):
         logger.info("Clapping ...")
+
         try:
+
             self.ScrollToBottomAndWaitForLoad(browser, logger)
             self.sleep(logger)
 
