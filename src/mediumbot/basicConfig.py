@@ -16,5 +16,10 @@ class basicConfig:
         except:
             raise ValueError("Can't load configuration from path '{}'".format(file))
 
-    def kwargsConfig(self):
-        pass
+    def kwargsConfig(self, kwargs):
+        try:
+            for key, value in vars(kwargs).items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+        except:
+            raise ValueError("Can't Load configuration from command-line interface.")

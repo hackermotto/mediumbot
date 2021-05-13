@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 with open("requirements.txt", "r", encoding="utf-8") as fr:
-    requirements= fr.read()
+    requirements = fr.read()
 
 setup(
     name="MediumBot",

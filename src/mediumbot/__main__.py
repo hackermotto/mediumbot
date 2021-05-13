@@ -21,48 +21,48 @@ def main():
 	parser.add_option("-d", "--driver", dest="driver", help=" Set Webdrivers")
 	parser.add_option("--headless", dest="headless", help="Set Headless")
 
-	parser.add_option("--post_black_list", dest="post_black_list", help="Post Black List")
+	parser.add_option("--post-black-list", dest="post_black_list", help="Post Black List")
 	
-	parser.add_option("--clap_for_posts", dest="clap_for_posts", help="Clap For Posts")
-	parser.add_option("--randomize_clapping_for_posts", dest="randomize_clapping_for_posts", help="Randomize Clapping For Posts")
-	parser.add_option("--max_claps_for_post", dest="max_claps_for_post", help="Set Maximum Claps For Post")
-	parser.add_option("--min_claps_for_post", dest="min_claps_for_post", help="Set Minimum Claps For Post")
+	parser.add_option("--clap-for-posts", dest="clap_for_posts", help="Clap For Posts")
+	parser.add_option("--randomize-clapping-for-posts", dest="randomize_clapping_for_posts", help="Randomize Clapping For Posts")
+	parser.add_option("--max-claps-for-post", dest="max_claps_for_post", help="Set Maximum Claps For Post")
+	parser.add_option("--min-claps-for-post", dest="min_claps_for_post", help="Set Minimum Claps For Post")
 
-	parser.add_option("--comment_on_posts", dest="comment_on_posts", help="Comment On Posts")
-	parser.add_option("--randomize_commenting_on_posts", dest="randomize_commenting_on_posts", help="Randomize Commenting On Posts")
+	parser.add_option("--comment-on-posts", dest="comment_on_posts", help="Comment On Posts")
+	parser.add_option("--randomize-commenting-on-posts", dest="randomize_commenting_on_posts", help="Randomize Commenting On Posts")
 	parser.add_option("--comments", dest="comments", help="Set Comments")
 
-	parser.add_option("--follow_users", dest="follow_users", help="Follow Users")
-	parser.add_option("--randomize_following_users", dest="randomize_following_users", help="Randomize Following Users")
+	parser.add_option("--follow-users", dest="follow_users", help="Follow Users")
+	parser.add_option("--randomize-following-users", dest="randomize_following_users", help="Randomize Following Users")
 	
-	parser.add_option("--unfollow_users", dest="unfollow_users", help="Unfollow Users")
-	parser.add_option("--randomize_unfollowing_users", dest="randomize_unfollowing_users", help="Randomize Unfollowing Users")
-	parser.add_option("--unfollow_users_black_list", dest="unfollow_users_black_list", help="Unfollow Users Black List")
+	parser.add_option("--unfollow-users", dest="unfollow_users", help="Unfollow Users")
+	parser.add_option("--randomize-unfollowing-users", dest="randomize_unfollowing_users", help="Randomize Unfollowing Users")
+	parser.add_option("--unfollow-users-black-list", dest="unfollow_users_black_list", help="Unfollow Users Black List")
 
-	parser.add_option("--use_related_topics", dest="use_related_topics", help="Use Related Topics")
-	parser.add_option("--posts_per_topic", dest="posts_per_topic", help="")
+	parser.add_option("--use-related-topics", dest="use_related_topics", help="Use Related Topics")
+	parser.add_option("--posts-per-topic", dest="posts_per_topic", help="")
 	parser.add_option("--verbose", dest="verbose", help="Verbose")
 
-	parser.add_option("--max_sleep", dest="max_sleep", help="Max Sleep")
-	parser.add_option("--min_sleep", dest="min_sleep", help="Min Sleep")
+	parser.add_option("--max-sleep", dest="max_sleep", help="Max Sleep")
+	parser.add_option("--min-sleep", dest="min_sleep", help="Min Sleep")
 
-	parser.add_option("--logging_level", dest="logging_level", help="Set Logging Level")
-	parser.add_option("--logging_datefmt", dest="logging_datefmt", help="Set Logging Date Format")
-	parser.add_option("--logging_format", dest="logging_format", help="Set Logging Format")
-	parser.add_option("--logging_file", dest="logging_file", help="Set Logging File")
+	parser.add_option("--timeout", dest="timeout", help="Timeout")
+
+	parser.add_option("--logging-level", dest="logging_level", help="Set Logging Level")
+	parser.add_option("--logging-datefmt", dest="logging_datefmt", help="Set Logging Date Format")
+	parser.add_option("--logging-format", dest="logging_format", help="Set Logging Format")
+	parser.add_option("--logging-file", dest="logging_file", help="Set Logging File")
 
 	parser.add_option("-c", "--config", dest="config", default=GetDefaultConfig(), help="Pass the configuration file path.")
 
 	(options, args) = parser.parse_args()
 
-	try:
-		bot = Bot()
-		if options.config:
-			bot.fileConfig(options.config)
-		bot.start()
 
-	except:
-		main()
+	bot = Bot()
+	bot.kwargsConfig(options)
+	if options.config:
+		bot.fileConfig(options.config)
+	bot.start()
 
 if __name__ == "__main__":
 	main()

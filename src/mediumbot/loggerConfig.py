@@ -39,5 +39,5 @@ class loggerConfig:
 
 
     def loggerConfig(self, file):
-        loggin.fileConfig(file)
+        logging.fileConfig(file)
         self.logger = logging.getLogger()
